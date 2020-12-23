@@ -2,41 +2,41 @@
 #include <conio.h>
 #include "stdio.h"
 
-class Point//создание класса Point
+class USATU//создание класса USATU
 {
 public:
-		int x, y; // два публичных атрибута
-		Point()//конструктор
+		int faculties, filial; // два публичных атрибута
+		USATU()//конструктор
 	{
-		printf("Point()\n");//отладочный вывод, чтоб видеть какой конструктор вызвается
-		x = 0;
-		y = 0;
+		printf("USATU()\n");//отладочный вывод, чтоб видеть какой конструктор вызвается
+		faculties = 7; //свойства класса USATU (поля)
+		filial = 2;   // присваиваем значение свойствам
 	}
-	Point(int x, int y)//конструктор с параметрами
+	USATU(int faculties, int filial)//конструктор с параметрами
 	{
-		printf("Point(int x, int y)\n");
-		this->x = x;
-		this->y = y;
+		printf("USATU(int faculties, int filial)\n");
+		this->faculties = faculties;
+		this->filial = filial;
 	}
-	Point(const Point &p)//копирующий конструктор, переносит все свойства из переданного объекта
+	USATU(const USATU &year)//копирующий конструктор, переносит все свойства из переданного объекта
 	{
-		printf("Point(const point &p)\n");
-		x = p.x;
-		y = p.y;
+		printf("USATU(const point &year)\n");
+		faculties = year.faculties;
+		filial = year.filial;
 	}
-	~Point()//деструктор
+	~USATU()//деструктор
 	{
-		printf("%d, %d\n", x, y);//вывод текущего состояния объекта, чтоб видеть что в объекте хранилось
-		printf("~Point()\n");
+		printf("%d, %d\n", faculties, filial);//вывод текущего состояния объекта, чтоб видеть что в объекте хранилось
+		printf("~USATU()\n");
 	}
 };  
 
 int main()
 {
 	{
-		Point p;//создаём объекты
-		Point p2(10, 20);
-		Point p3(p2);
+		USATU year;//создаём объекты
+		USATU year2(1932, 1932);
+		USATU year3(year2);
 	}
 	_getch();
 	return 0;
