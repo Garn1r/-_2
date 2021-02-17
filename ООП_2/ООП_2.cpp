@@ -2,41 +2,38 @@
 #include <conio.h>
 #include "stdio.h"
 
-class USATU//создание класса USATU
+class student//создание класса student
 {
 public:
-		int faculties, filial; // два публичных атрибута
-		USATU()//конструктор
+	int age; // два публичных атрибута
+	student()//конструктор
 	{
-		printf("USATU()\n");//отладочный вывод, чтоб видеть какой конструктор вызвается
-		faculties = 7; //свойства класса USATU (поля)
-		filial = 2;   // присваиваем значение свойствам
+		printf("student()\n");//отладочный вывод, чтоб видеть какой конструктор вызвается
+		age = 33; //свойства класса student (поля)   // присваиваем значение свойствам
 	}
-	USATU(int faculties, int filial)//конструктор с параметрами
+	student(int age)//конструктор с параметрами
 	{
-		printf("USATU(int faculties, int filial)\n");
-		this->faculties = faculties;
-		this->filial = filial;
+		printf("student(int age)\n");
+		this->age = age;
 	}
-	USATU(const USATU &year)//копирующий конструктор, переносит все свойства из переданного объекта
+	student(const student& FORT)//копирующий конструктор, переносит все свойства из переданного объекта
 	{
-		printf("USATU(const point &year)\n");
-		faculties = year.faculties;
-		filial = year.filial;
+		printf("student(const point &FORT)\n");
+		age = FORT.age;
 	}
-	~USATU()//деструктор
+	~student()//деструктор
 	{
-		printf("%d, %d\n", faculties, filial);//вывод текущего состояния объекта, чтоб видеть что в объекте хранилось
-		printf("~USATU()\n");
+		printf("%d\n", age);//вывод текущего состояния объекта, чтоб видеть что в объекте хранилось
+		printf("~student()\n");
 	}
-};  
+};
 
 int main()
 {
 	{
-		USATU year;//создаём объекты
-		USATU year2(1932, 1932);
-		USATU year3(year2);
+		student Luntik;//создаём объекты
+		student Iskander(19);
+		student Ainur(Iskander);
 	}
 	_getch();
 	return 0;
