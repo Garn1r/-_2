@@ -4,8 +4,9 @@
 
 class student//создание класса student
 {
+//protected:
 public:
-	int age; // два публичных атрибута
+	int age; //  публичныq атрибут
 public:
 	student()//конструктор по умолчанию
 	{
@@ -25,9 +26,18 @@ public:
 	~student()//деструктор
 	{
 		printf("%d\n", age);//вывод текущего состояния объекта, чтоб видеть что в объекте хранилось
-		printf("~student()\n");
+		printf("~student()\n\n");
 	}
+	void summ(int overage)
+	{
+		age = age + overage;
+	}
+	void vozrast();
 };
+void student::vozrast()
+{
+	age = 0;
+}
 
 int main()
 {
@@ -42,6 +52,12 @@ int main()
 	delete DinamLuntik;
 	delete DinamIskander;
 	delete DinamAinur;
+
+	student *DinamIan = new student(19);
+	DinamIan->vozrast();
+	DinamIan->summ(2);
+	delete DinamIan;
+
 
 	_getch();
 	return 0 ;
