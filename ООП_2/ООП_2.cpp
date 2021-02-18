@@ -6,7 +6,8 @@ class student//создание класса student
 {
 public:
 	int age; // два публичных атрибута
-	student()//конструктор
+public:
+	student()//конструктор по умолчанию
 	{
 		printf("student()\n");//отладочный вывод, чтоб видеть какой конструктор вызвается
 		age = 33; //свойства класса student (поля)   // присваиваем значение свойствам
@@ -16,10 +17,10 @@ public:
 		printf("student(int age)\n");
 		this->age = age;
 	}
-	student(const student& FORT)//копирующий конструктор, переносит все свойства из переданного объекта
+	student(const student &Luntik)//копирующий конструктор, переносит все свойства из переданного объекта
 	{
-		printf("student(const point &FORT)\n");
-		age = FORT.age;
+		printf("student(const point &Luntik)\n");
+		age = Luntik.age;
 	}
 	~student()//деструктор
 	{
@@ -35,7 +36,14 @@ int main()
 		student Iskander(19);
 		student Ainur(Iskander);
 	}
+	student *DinamLuntik=new student;//динамически создаём объекты
+	student *DinamIskander=new student(19);
+	student *DinamAinur=new student(*DinamIskander);
+	delete DinamLuntik;
+	delete DinamIskander;
+	delete DinamAinur;
+
 	_getch();
-	return 0;
+	return 0 ;
 }
 
