@@ -1,8 +1,7 @@
 ﻿#include <iostream>
 #include <conio.h>
 #include "stdio.h"
-
-
+#include <string>
 
 class student//создание класса student
 {
@@ -22,7 +21,7 @@ public:
 	}
 	student(const student& Luntik)//копирующий конструктор, переносит все свойства из переданного объекта
 	{
-		printf("student(const point &Luntik)\n");
+		printf("student(const student &Luntik)\n");
 		age = Luntik.age;
 	}
 	~student()//деструктор
@@ -41,8 +40,6 @@ void student::vozrast()
 	age = 0;
 }
 
-
-
 class height_student :public student
 {
 protected:
@@ -60,7 +57,7 @@ public:
 	}
 	height_student(const height_student& Luntik)//копирующий конструктор, переносит все свойства из переданного объекта
 	{
-		printf("height_student(const point &Luntik)\n");
+		printf("height_student(const student &Luntik)\n");
 		height = Luntik.height;
 	}
 	~height_student()//деструктор
@@ -75,7 +72,42 @@ public:
 	void vozrast();
 };
 
+class Section
+{
+private:
+	student* p1;
+	student* p2;
+public:
+	Section()
+	{
+		printf("Section()\n");
+		p1 = new student;
+		p2 = new student;
 
+	}
+
+	Section(char name)
+	{
+		printf("Section(char name)\n");
+		p1 = new student(11);
+		p2 = new student(12);
+	}
+	Section(const Section& s)
+	{
+		printf("Section(const Section &b)\n");
+		p1 = new student(*(s.p1));
+		p2 = new student(*(s.p2));
+
+	}
+	~Section()
+	{
+
+		delete p1;
+		delete p2;
+		printf("~Section()\n");
+	}
+
+};
 
 int main()
 {
@@ -91,25 +123,20 @@ int main()
 	delete DinamIskander;
 	delete DinamAinur;
 
-
 	student* DinamIan = new student(19);
 	DinamIan->vozrast();
 	DinamIan->summ(2);
 	delete DinamIan;
 
-
 	height_student* Iskander = new height_student(19, 180);
 	delete Iskander;
 
 
-	student *Lee = new student(21);
-	//height_student *Vlad = Lee;
-    student *Michael = new height_student(20, 12);
-	height_student *Vlad = new height_student(20, 13);
-	delete Michael;
-	delete Vlad;
 
-
+	Section* s1 = new Section('f');
+	Section* s2 = new Section(*s1);
+	delete s1;
+	delete s2;
 	_getch();
 	return 0;
 }
